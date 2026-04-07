@@ -11,6 +11,65 @@
 
 
 
+using namespace BNM::IL2CPP
+
+
+
+
+std::vector<std::string> antiNames = {
+        "AntiModder","QuestLink","NetworkRig","URL","NoLemonScript","Bow","BasilsAuth","KickIfBanned",
+        "LeaderboardManager","QuestScript","kick","kickp","DllChecker","DeviceCheck","ModsFolderChecker",
+        "Melonloaderchecker","SuspiciousBehaviourChecker","UnitysAntiCheat","LemonFolderChecker","KSHRAnti",
+        "AntiKickTest","KickProtection","PastebinLoader","NoNameDetector","AntiModders","PhotonTrigger",
+        "Bullet","VoidGuard","QuitOnCollision","AIbooster","StoreMesh","DllSigmaThing","CheckIfInUnity",
+        "BanOnStart","FurnacesAntiCheat","hydrasbasicanticheat","TheGriddy","SnowballSpammy","QuestSentinelProtect",
+        "QuestScriptFinder","ModsFolderCheckerV2","joshhsFreeAnticheat","PlayfabManager1","DllCheck",
+        "HydrasPrivAntiCheat","HydrasUltimateAntiCheat","GorillaNot","Imposter","KarmasMidAC","LoadObjectsOnStart",
+        "UnloadObjectsOnStart","KokoAntiSkid","FoxysAttributeTest","FoxysReallyGoodAnticheat","UabeMethod",
+        "SuspiciousBehaviourDetector","Dll","FieldCheatDetector","ADetector'1","PersistentSingleton1",
+        "Entitlementcheck","AstreiodsGameManager","GetBanReason","GetBanReasonFromSave","SaveManager",
+        "TeleportToBan","VersionChecker","KeyPadEnter","AppEntitlementCheck","SignatureCheck",
+        "ProtectedUIInt32","AsteroidSpawner","ProtectedInt16","ProtectedVector4","ProtectedFloat",
+        "ProtectedQuaternionPref","ProtectedVector3Int","ProtectedVector2Pref","ProtectedString","Asteroid",
+        "CheatingDetectionStatus","AntiCheatMonitor","ProtectedUInt64","QuestSentailProtect","assembliesToCheck",
+        "AstreiodsGame","WallHackDetector","SpeedHackDetector","ModTool","GOOBEREER","GlitchMonke",
+        "IgottaremanethisitwasmadebyK_S_H_R","Kidsthesedays","veryfyyey","ApkChecker","Antimodders",
+        "Code.Stages.Anticheats","AppDeeplinkUI","ChangeCosmetic","coinsScripts","PublicZone","SampleUI",
+        "LoginHandle.IsClientLoggedIn","ConntrastStretch","CollisionSounds","Donut","WifiCheck",
+        "PlayerMovement01","Funnymods","BloxianAnti","checkere","particallagreducer","timmyfixer",
+        "antidll","anti-dll","anti-hack","anti-cheat","anticheat","ownsmodcosmetics","OpenLink",
+        "hidemyshitsonofabitch","BadBilly","GorillaQuitBox","yummylemons","yummymelons","yummy","Sgima",
+        "tpiffail","gameobj","gaymonster","moveon","NewBehaviourScript","spoopy","CokesAnticheat",
+        "HorrorAi","sigma","DiscordWebhookTrigger","coke","youcantgetwomenever","youbroketherules",
+        "IsCorrect","yabadabadooo","workrrr","WHYYYYY","WAAAAAA","veryyfyyey","TURN","Treeheehehe",
+        "treehe","spin","byebye","byebyeee","rotatething","settingsyoo","thinghehe","treeman","pain",
+        "EnableObjectAfterDelay","yeye","handscantbeextremelyfarapart","byeeeeeeeeee","heydonthaveeverything",
+        "owner","whyareyoufrozen","no","nametag","Checkn","blablabla","EditorOnlyStuff",
+        "somethingtolurethem","NameDetector","ModFolderChecker","AntiCheat",
+        "IsModded","DLL Checker","Melonloaderchecker","FolderCheck",
+        "AnticheatHider","OPAnticheat","CoolThing","KSHRAnti",
+        "LemonLoaderChecker","Mods Folder Checker","AntiModders",
+        "AntiCheat","ModderChecker","LemonFolderChecker","QuestLink"
+};
+
+
+
+void AntiChecker_FindAndDisable() {
+    for (auto& name : antiNames) {
+        GameObject* obj = GameObject::Find(name.c_str());
+        if (obj) {
+            BNM_LOG_WARN("made by gengar", name.c_str());
+            obj->SetActive(false);
+        } else {
+            BNM_LOG_WARN("not working")
+        }
+    }
+}
+
+
+
+
+
 
 static void (*orig_quit)() = nullptr;
 static void (*orig_quit_int)(int) = nullptr;
@@ -97,3 +156,5 @@ void init_main() {
         BNM::Loading::TryLoadByDlfcnHandle(handle);
     }).detach();
 }
+
+//if you use pls give credits this took a little while
